@@ -2,10 +2,6 @@
 
 ## Mapping Prefix <-> ASN from BGP dump
 
-```sh
-cargo run -- -a -p
-```
-
 Rust client for obtaining route collection dump.
 See <https://ris.ripe.net/docs/20_raw_data_mrt.html#route-collection-raw-data-mrt-files>.  
 Print announced Prefix-ASN pairs and writes mapping files:
@@ -29,6 +25,7 @@ OPTIONS:
 ```
 
 ```sh
+$ cd ./bgp-mapping
 $ cargo run --release -- -p -a
     Finished release [optimized] target(s) in 0.11s
      Running `target/release/bgp-mapping`
