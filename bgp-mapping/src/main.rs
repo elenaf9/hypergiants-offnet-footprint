@@ -1,7 +1,7 @@
 use std::{
     collections::{HashMap, HashSet},
     fs::{create_dir, File},
-    io::Write,
+    io::Write, time::Instant,
 };
 
 use bgpkit_parser::BgpkitParser;
@@ -14,13 +14,13 @@ struct Opt {
     #[clap(long, help = "Route collector no.", default_value = "00")]
     rrc: String,
 
-    #[clap(long, name = "YYYY-MM-DD")]
+    #[clap(long, name = "YYYY-MM-DD", help = "[default: date today]")]
     date: Option<String>,
 
     #[clap(long, name = "hh:MM", default_value = "00:00")]
     time: String,
 
-    #[clap(long, help = "Filter for supernets of a prefix.")]
+    #[clap(long, help = "Filter for super-/ subnets of a specific prefix.")]
     prefix: Option<String>,
 
     #[clap(long, short = 'a', help = "Write ASN -> prefixes mapping file.")]
@@ -106,6 +106,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut prefix_asn: HashMap<_, HashSet<_>> = HashMap::new();
     let mut asn_prefix: HashMap<_, Vec<_>> = HashMap::new();
 
+    let start = Instant::now();
     let mut current_first_octet = 0;
     let parser = BgpkitParser::new(&url).unwrap();
     parser
@@ -117,7 +118,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             };
 
             match contain_prefix {
-                Some(p) => ipv4network.is_supernet_of(p),
+                Some(p) => ipv4network.is_supernet_of(p) || ipv4network.is_subnet_of(p),
                 None => true,
             }
         })
@@ -150,5 +151,12 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             }
             Ok(())
         })?;
+        if let Some(file) = prefix_asn_mapping_file.as_mut() {
+            write_prefix_mapping_files(&mut prefix_asn, file)?;
+        }
+        if let Some(file) = asn_prefix_mapping_file.as_mut() {
+            write_asn_mapping_files(&mut asn_prefix, file)?;
+        }
+        println!("Time elapsed: {}s", Instant::now().duration_since(start).as_secs());
     Ok(())
 }
