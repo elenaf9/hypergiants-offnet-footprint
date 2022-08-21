@@ -25,18 +25,23 @@ try:
         meta_header = False
 
         if parsed["data"]["http"]["status"] == "success" or parsed["data"]["http"]["status"] == "application-error":
-            certificate = parsed["data"]["http"]["result"]["response"]["request"][
-                "tls_log"]["handshake_log"]["server_certificates"]["certificate"]
-            serial_number = certificate["parsed"]["serial_number"]
-            if serial_number in meta_certificates or certificate["parsed"]["subject"]["organization"][0] == "Facebook, Inc.":
-                meta_certificate = True
+            try:
+                certificate = parsed["data"]["http"]["result"]["response"]["request"][
+                    "tls_log"]["handshake_log"]["server_certificates"]["certificate"]
+                serial_number = certificate["parsed"]["serial_number"]
+                subject = certificate["parsed"]["subject"]
+                if serial_number in meta_certificates or ("organization" in subject and subject["organization"][0] == "Facebook, Inc."):
+                    meta_certificate = True
 
-            raw_headers = parsed["data"]["http"]["result"]["response"]["headers"]
-            if "unknown" in raw_headers:
-                possible_headers = raw_headers["unknown"]
-                for header in possible_headers:
-                    if header["key"] == "x_fb_debug":
-                        meta_header = True
+                raw_headers = parsed["data"]["http"]["result"]["response"]["headers"]
+                if "unknown" in raw_headers:
+                    possible_headers = raw_headers["unknown"]
+                    for header in possible_headers:
+                        if header["key"] == "x_fb_debug":
+                            meta_header = True
+            except Exception as e:
+                print(e, file=sys.stderr)
+                pass
 
         if meta_certificate and meta_header:
             print(parsed["ip"] + "|" "success-meta-header-cert" +
