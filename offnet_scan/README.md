@@ -17,3 +17,21 @@ $ zgrab2 --input-file=zgrab_config/zmap_results_global_tcp_443 multiple -c zgrab
 [...]
 time="2022-08-21T18:30:28Z" level=info msg="finished grab at 2022-08-21T18:30:28Z"
 ```
+
+### Scan results format
+
+zmap
+```
+{IP}
+```
+
+zgrab2
+```
+{IP}| {STATUS}| {JSON HTTPS result with cert (only if STATUS=sucess-meta-*)}
+```
+
+`STATUS`
+* success-meta-{header-cert, header, cert} or default zgrab2 status like unknown-error, success
+  * `success-meta-header-cert` (both meta header and cert found)
+  * `success-meta-header` (meta header  found)
+  * `success-meta-cert` (meta cert found)
