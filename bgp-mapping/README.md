@@ -3,7 +3,8 @@
 Rust client for obtaining route collection dump.
 See <https://ris.ripe.net/docs/20_raw_data_mrt.html#route-collection-raw-data-mrt-files>.  
 Print announced Prefix-ASN pairs and writes mapping files:
-- `data/asn_prefix_mapping.csv`: Prefixes announced by each ASN. Note that we write the mapping to file in batches (i.e. we write the current mapping to the file for each new /8 prefix), thus ASN may appear multiple times.
+- `data/asn_prefix_mapping.csv`: Prefixes announced by each ASN.  
+  **Note:** we write the mapping to file in batches (i.e. we write the current mapping to the file for each new /8 prefix), thus ASN may appear multiple times.
 - `data/prefix_asn_mapping.csv`: AS(es) that announce a prefix. Should usually just be one AS.
 
 ```sh
