@@ -6,4 +6,4 @@ target/
 Cargo.lock
 
 # Skip bgp mapping files
-*.csv
+*_mapping.csv
