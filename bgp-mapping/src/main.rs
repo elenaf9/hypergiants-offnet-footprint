@@ -100,7 +100,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         None => None,
     };
 
-    let _ = create_dir("../data");
+    let _ = create_dir("data");
     let mut prefix_asn_mapping_file = opt.prefix_asn_mapping.then(|| File::create("../data/prefix_asn_mapping.csv").unwrap());
     let mut asn_prefix_mapping_file = opt.asn_prefix_mapping.then(|| File::create("../data/asn_prefix_mapping.csv").unwrap());
     let mut prefix_asn: HashMap<_, HashSet<_>> = HashMap::new();
