@@ -102,3 +102,10 @@ Subject | Certificate | Count
 *.whatsapp.net | MIIGSjCCBTKgAwIBAgIQDvROSUKKrAjZVp1kqTETGzANBg... | 56
 *.wit.ai | MIIGuzCCBaOgAwIBAgIQA6X0mSXwiMEv5vA1I/hurDANBg... | 56
 
+### Header Response Header Keys
+
+header key | count
+-|-
+priority x_fb_debug | 178
+proxy_status | 1400
+x_fb_debug | 438
