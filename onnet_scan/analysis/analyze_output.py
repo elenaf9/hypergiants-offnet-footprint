@@ -59,14 +59,14 @@ print("\nstatus:\n", status)
 
 success = df[df['certificate'].str.len() > 0]
 
-# Analyze certificates
-certs = success.groupby(["issuer", "subject", "certificate"]).size().reset_index()
 # Unique issuer sn
-print("\nUnique issuer sns:\n", certs[["issuer"]].nunique().to_frame(name="issuer nunique"))
+print("\nUnique issuer sns:\n", success[["issuer"]].nunique().to_frame(name="issuer nunique"))
+# Analyze certificates
+certs = success.groupby(["subject", "certificate"]).size().reset_index()
 # Unique certificates per subject cn
-print("\nUnique subjects and certificates:\n", certs[["subject", "certificate"]].nunique().to_frame(name="nunique"))
+print("\nUnique subjects and certificates:\n", certs.nunique().to_frame(name="nunique"))
 # Print certificates
-print("\ncertificates:\n", certs[["subject", "certificate"]])
+print("\ncertificates:\n", certs)
 
 # Analyze http header keys
 header_keys = success.groupby(["header_key"]).size().reset_index()
