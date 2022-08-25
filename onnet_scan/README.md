@@ -60,9 +60,9 @@ proxy_status
 x_fb_debug
 ```
 
-### Output analysis
+## Output analysis
 
-#### Status
+### Status
 
 status | count
 -|-
@@ -72,15 +72,15 @@ io-timeout         | 751
 success            | 1456
 unknown-error      | 11042
 
-#### Unique counters
+### Unique counters
 
-- | nunique
+Key | nunique
 -|-
 Issuer      | 1
 Subjects     | 15
 Certificates | 15
 
-#### Certificates
+### Certificates
 
 Subject | Certificate
 -|-
