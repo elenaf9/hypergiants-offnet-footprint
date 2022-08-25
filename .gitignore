@@ -7,3 +7,6 @@ Cargo.lock
 
 # Skip bgp mapping files
 *_mapping.csv
+
+# Skip onnet scan output file
+*output.txt
