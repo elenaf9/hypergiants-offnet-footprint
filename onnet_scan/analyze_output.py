@@ -51,7 +51,7 @@ def load_data(file_name):
     df = df.apply(select, axis=1, result_type='expand')
     return df
 
-df = load_data("../2022-08-16T13/output.zip")
+df = load_data("./2022-08-16T13/output.zip")
 
 # Different status
 status = df.groupby(["status"]).size().reset_index()

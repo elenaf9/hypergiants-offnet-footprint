@@ -3,7 +3,6 @@ use std::{
     fs::{create_dir, File},
     io::Write, time::Instant,
 };
-
 use bgpkit_parser::BgpkitParser;
 use chrono::prelude::*;
 use clap::Parser;
@@ -99,10 +98,11 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         Some(prefix) => Some(prefix.parse()?),
         None => None,
     };
+    let folder = format!("{}-{}-{}",year, month, day);
 
-    let _ = create_dir("data");
-    let mut prefix_asn_mapping_file = opt.prefix_asn_mapping.then(|| File::create("../data/prefix_asn_mapping.csv").unwrap());
-    let mut asn_prefix_mapping_file = opt.asn_prefix_mapping.then(|| File::create("../data/asn_prefix_mapping.csv").unwrap());
+    let _ = create_dir(&folder);
+    let mut prefix_asn_mapping_file = opt.prefix_asn_mapping.then(|| File::create(folder.clone() + "/prefix_asn_mapping.csv").unwrap());
+    let mut asn_prefix_mapping_file = opt.asn_prefix_mapping.then(|| File::create(folder + "/asn_prefix_mapping.csv").unwrap());
     let mut prefix_asn: HashMap<_, HashSet<_>> = HashMap::new();
     let mut asn_prefix: HashMap<_, Vec<_>> = HashMap::new();
 
@@ -131,9 +131,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 if let Some(file) = prefix_asn_mapping_file.as_mut() {
                     write_prefix_mapping_files(&mut prefix_asn, file)?;
                 }
-                if let Some(file) = asn_prefix_mapping_file.as_mut() {
-                    write_asn_mapping_files(&mut asn_prefix, file)?;
-                }
+                // if let Some(file) = asn_prefix_mapping_file.as_mut() {
+                //     write_asn_mapping_files(&mut asn_prefix, file)?;
+                // }
                 current_first_octet = first_octet;
             }
             if let Some(asn) = elem

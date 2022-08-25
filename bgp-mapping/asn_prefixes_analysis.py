@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import gc
 import functools
+import sys
 
 def count_prefixes(x):
     x = functools.reduce(lambda acc, curr: acc + curr, x, '')
@@ -30,7 +31,7 @@ def count_prefixes(x):
 
 # load bgp data from csv
 def load_data(file_name):
-    cnames = ["asn","prefixes"]
+    cnames = ["asn","allocated addresses"]
 
     load_config = {
         "sep":"|",
@@ -38,10 +39,15 @@ def load_data(file_name):
         "header":None,
         "names":cnames,
         "index_col":False,
+        "compression":"zip"
     }
-    
     return pd.read_csv(file_name, **load_config)
 
-df = load_data("../2022-08-11/asn_prefix_mapping.csv")
-prefix_count = df.groupby(['asn'], sort=False).agg(count_prefixes)
-print(prefix_count)
+for date in ['2022-08-11', '2022-08-25']:
+    print("\n" + date + ":\n")
+    df = load_data("./" + date + "/asn_prefix_mapping.zip")
+    df["asn"] = df["asn"].map(lambda x: x.strip())
+    if len(sys.argv) > 1:
+        df = df[df["asn"] == sys.argv[1]]
+    prefix_count = df.groupby(['asn'], sort=False).agg(count_prefixes)
+    print(prefix_count)

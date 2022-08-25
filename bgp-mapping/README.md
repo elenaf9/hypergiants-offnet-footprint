@@ -24,7 +24,6 @@ OPTIONS:
 ```
 
 ```sh
-$ cd ./bgp-mapping
 $ cargo run --release -- -p -a
     Finished release [optimized] target(s) in 0.11s
      Running `target/release/bgp-mapping`
@@ -75,4 +74,22 @@ $ ./resolve.sh whois AS3333
 ```sh
 $ ./resolve.sh whois 193.0.10.0/23
 AS3333
+```
+
+## Number of allocated IP addresses per AS
+
+Code: [asn_prefixes_analysis.py](./analysis/asn_prefixes_analysis.py)
+
+```sh
+$ python3 asn_prefixes_analysis.py 32934
+
+2022-08-11:
+
+asn    allocated addresses
+32934               190454
+
+2022-08-25:
+
+asn    allocated addresses        
+32934               190708
 ```
