@@ -2,13 +2,13 @@
 
 ### Used asn mapping
 
-```
+```sh
 32934 | 31.13.24.0/21 31.13.64.0/18 31.13.65.0/24 31.13.66.0/24 31.13.67.0/24 31.13.68.0/24 31.13.69.0/24 31.13.70.0/24 31.13.71.0/24 31.13.72.0/24 31.13.73.0/24 31.13.74.0/24 31.13.75.0/24 31.13.76.0/24 31.13.77.0/24 31.13.78.0/24 31.13.80.0/24 31.13.81.0/24 31.13.82.0/24 31.13.83.0/24 31.13.84.0/24 31.13.85.0/24 31.13.86.0/24 31.13.87.0/24 31.13.88.0/24 31.13.89.0/24 31.13.92.0/24 31.13.93.0/24 31.13.94.0/24 31.13.96.0/19
 ```
 
 ### Commands
 
-```
+```sh
 $ zgrab2 --input-file=zgrab_config/input_scan.txt --output-file=output.txt multiple -c zgrab_config/scan_config.ini
 INFO[0000] started grab at 2022-08-16T13:19:42+02:00
 INFO[0300] finished grab at 2022-08-16T13:24:42+02:00
@@ -31,7 +31,7 @@ Different in successes between `zgrab2` and
 
 #### Unique certificates
 
-```
+```sh
 C=US, ST=California, L=Menlo Park, O=Facebook, Inc., CN=*.facebook.com
 C=US, ST=California, L=Menlo Park, O=Facebook, Inc., CN=*.instagram.com
 C=US, ST=California, L=Menlo Park, O=Facebook, Inc., CN=*.facebookvirtualassistant.com
@@ -51,7 +51,7 @@ C=US, ST=California, L=Menlo Park, O=Facebook, Inc., CN=*.secure.facebook.com
 
 #### Unique HTTP headers
 
-```
+```sh
 proxy_status
     e_fb_vipaddr
     e_fb_builduser
@@ -59,3 +59,43 @@ proxy_status
     e_fb_canaryid
 x_fb_debug
 ```
+
+### Output analysis
+
+#### Status
+
+status | count
+-|-
+application-error  | 616
+connection-timeout | 19671
+io-timeout         | 751
+success            | 1456
+unknown-error      | 11042
+
+#### Unique counters
+
+- | nunique
+-|-
+Issuer      | 1
+Subjects     | 15
+Certificates | 15
+
+#### Certificates
+
+Subject | Certificate
+-|-
+*.atlassolutions.com | MIIHVTCCBj2gAwIBAgIQBPvoc4JrZHU862rc0HKrRDANBg...
+*.bulletin.com | MIIHQjCCBiqgAwIBAgIQCCqKeqrKGfvIo3oLTDdA8zANBg...
+*.expresswifi.com | MIIG1TCCBb2gAwIBAgIQAZexlU5vAldE6q3AdQTgDDANBg...
+*.extern.facebook.com | MIIG3TCCBcWgAwIBAgIQDLRqtP+Wm3ZEilrSeE2qrzANBg...
+*.facebook-dns.com | MIIGDjCCBPagAwIBAgIQDvBx0auorbqs9S8AnBQhvzANBg...
+*.facebook.com | MIIGjTCCBXWgAwIBAgIQBNzNaM3c53MdEir1t3Cg/jANBg...
+*.facebookvirtualassistant.com | MIIG+jCCBeKgAwIBAgIQBZ/rIra1c+PmSI0B8Ec6uDANBg...
+*.fb.com | MIIGuTCCBaGgAwIBAgIQB7+5byBu4z+OOBQXqifwrTANBg...
+*.fbe2e.com | MIIGwzCCBaugAwIBAgIQAha9nCTGZ3J4MjEKEitHQTANBg...
+*.instagram.com | MIIGXjCCBUagAwIBAgIQBA+E2vSpH+lYPkpcAZlliDANBg...
+*.oculus.com | MIIHVDCCBjygAwIBAgIQCNZSv0Lm7G5xSzuPGlPRWzANBg...
+*.secure.facebook.com | MIIG3zCCBcegAwIBAgIQDrvm4frz01MCm1Wt+yMLZjANBg...
+*.secure.latest.facebook.com | MIIG+DCCBeCgAwIBAgIQB/z7aM+ad8U/6EC1WPyWxzANBg...
+*.whatsapp.net | MIIGSjCCBTKgAwIBAgIQDvROSUKKrAjZVp1kqTETGzANBg...
+*.wit.ai | MIIGuzCCBaOgAwIBAgIQA6X0mSXwiMEv5vA1I/hurDANBg...

@@ -66,7 +66,7 @@ print("\nUnique issuer sns:\n", certs[["issuer"]].nunique().to_frame(name="issue
 # Unique certificates per subject cn
 print("\nUnique subjects and certificates:\n", certs[["subject", "certificate"]].nunique().to_frame(name="nunique"))
 # Print certificates
-print("\ncertificates:\n", certs)
+print("\ncertificates:\n", certs[["subject", "certificate"]])
 
 # Analyze http header keys
 header_keys = success.groupby(["header_key"]).size().reset_index()
