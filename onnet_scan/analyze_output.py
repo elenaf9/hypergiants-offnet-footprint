@@ -68,9 +68,14 @@ print("\nUnique subjects and certificates:\n", certs.nunique().to_frame(name="nu
 # Print certificates
 print("\ncertificates:\n", certs)
 
+
 # Analyze http header keys
 header_keys = success.groupby(["header_key"]).size().reset_index()
 print("\nheader_keys:\n", header_keys)
+
+certs = success.groupby(["subject", "header_key"]).size().reset_index()
+# Header keys per subject
+print("\nHeader keys per subject:\n", certs)
 
 
 
