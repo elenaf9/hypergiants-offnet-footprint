@@ -22,8 +22,10 @@ def count_prefixes(x):
             continue
         last = ip
         mask = int(mask, 10)
-        addrs = int('111111111111111111111111111111', 2) >> mask
-        allocated_addrs += addrs
+        addrs = (int('11111111'+'11111111'+'11111111'+'11111111', 2) >> mask) + 1 
+        # Subtract 2 because 2 addresses are unusable per IP-range:
+        # 1 is the network address and 1 is the broadcast address
+        allocated_addrs += (addrs -2)
     return allocated_addrs
 
 # load bgp data from csv
