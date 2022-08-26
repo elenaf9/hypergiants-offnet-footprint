@@ -26,10 +26,10 @@ GetIps() {
 }
 
 
-export -f WhoIs
-export -f GetASNforIP
-export -f GetAllIpv4sForASN
-export -f GetIps
+export WhoIs
+export GetASNforIP
+export GetAllIpv4sForASN
+export GetIps
 
 test="AS3333"
 

@@ -35,3 +35,7 @@ zgrab2
   * `success-meta-header-cert` (both meta header and cert found)
   * `success-meta-header` (meta header  found)
   * `success-meta-cert` (meta cert found)
+
+### Analysis
+
+Hosts per ASN: [hosts_per_AS.txt](./hosts_per_AS.txt)
