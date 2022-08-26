@@ -11,7 +11,7 @@ import hashlib
 def map(row):
     ip = row["ip"]
     cert = row["cert"].split('"certificate": {"raw": "')[1].split('", ')[0]
-    proc = subprocess.run(['sh', '../bgp-mapping/resolve.sh', 'whois', ip], capture_output=True)
+    proc = subprocess.run(['sh', '../../bgp-mapping/resolve.sh', 'whois', ip], capture_output=True)
     asn = proc.stdout.decode('ascii')[:-1]
     return pd.Series([ip, asn, cert], index=['ip', 'asn', 'cert'])
 

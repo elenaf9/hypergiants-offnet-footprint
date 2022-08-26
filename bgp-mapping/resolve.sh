@@ -16,7 +16,7 @@ GetASNforIP() {
 }
 
 GetASNCountryforIP() {
-    whois $1  | grep -P -o "(ountry.*)" | grep -P -o "\w\w$" -m 1
+    whois $1  | grep -P -o "(ountry.*)" | grep -P -o "\w\w$" | tail -1
 }
 
 GetAllIpv4sForASN() {

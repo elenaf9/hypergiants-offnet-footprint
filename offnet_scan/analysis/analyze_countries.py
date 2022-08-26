@@ -11,9 +11,9 @@ import hashlib
 def map(row):
     asn = row["asn"]
     hosts = row["hosts"]
-    if asn == 'AS32934':
-        return pd.Series([asn, 'ONNET', 0], index=['asn', 'country', 'hosts'])
-    proc = subprocess.run(['sh', '../bgp-mapping/resolve.sh', 'whois_country', asn], capture_output=True)
+    # if asn == 'AS32934':
+    #     return pd.Series([asn, 'ONNET', 0], index=['asn', 'country', 'hosts'])
+    proc = subprocess.run(['sh', '../../bgp-mapping/resolve.sh', 'whois_country', asn], capture_output=True)
     country = proc.stdout.decode('ascii')[:-1]
     return pd.Series([asn, country, hosts], index=['asn', 'country', 'hosts'])
 
@@ -32,7 +32,7 @@ def load_data(file_name):
     }
     return pd.read_csv(file_name, **load_config).apply(map, axis=1, result_type='expand')
 
-df = load_data('test.txt')
+df = load_data('hosts_per_AS.csv')
 grouped = df.filter(items=['country', 'hosts']).groupby(["country"], sort=False)
 print('\nASes per country:\n', grouped.count().sort_values(by=['hosts'], ascending=False))
 print('\nhosts per country:\n', grouped.sum().sort_values(by=['hosts'], ascending=False))
