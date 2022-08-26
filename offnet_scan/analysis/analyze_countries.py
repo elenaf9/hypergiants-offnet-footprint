@@ -34,7 +34,7 @@ def load_data(file_name):
     }
     return pd.read_csv(file_name, **load_config).apply(map, axis=1, result_type='expand')
 
-df = load_data('hosts_per_AS.txt')
+df = load_data('test.txt')
 grouped = df.filter(items=['country', 'hosts']).groupby(["country"], sort=False)
 print('\nASes per country:\n', grouped.count().sort_values(by=['hosts'], ascending=False))
 print('\nhosts per country:\n', grouped.sum().sort_values(by=['hosts'], ascending=False))

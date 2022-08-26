@@ -9,4 +9,5 @@ Cargo.lock
 *_mapping.csv
 
 # Skip onnet scan output file
-*output.txt
+*.txt
+*test*

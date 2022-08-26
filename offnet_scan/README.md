@@ -40,8 +40,8 @@ zgrab2
 
 File | Description
 -|-
-[hosts_per_AS.csv](./hosts_per_AS.csv) | Hosts per ASN
-[hosts_certs_per_AS.csv](./hosts_certs_per_AS.csv) | Unique Certificates per ASN
-[hosts_countries_per_AS.csv](./hosts_countries_per_AS.csv) | Host and Country per ASN
-[ASes_per_country.csv](./ASes_per_country.csv) | ASes per country
-[hosts_per_country.csv](./hosts_per_country.csv) | Hosts per country
+[hosts_per_AS.csv](./analysis/hosts_per_AS.csv) | Hosts per ASN
+[hosts_certs_per_AS.csv](./analysis/hosts_certs_per_AS.csv) | Unique Certificates per ASN
+[hosts_countries_per_AS.csv](./analysis/hosts_countries_per_AS.csv) | Host and Country per ASN
+[ASes_per_country.csv](./analysis/ASes_per_country.csv) | ASes per country
+[hosts_per_country.csv](./analysis/hosts_per_country.csv) | Hosts per country
