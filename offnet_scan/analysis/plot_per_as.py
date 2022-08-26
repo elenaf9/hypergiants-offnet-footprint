@@ -15,6 +15,11 @@ def load_data(file_name):
 ases = load_data('hosts_per_AS.csv').filter(items=['asn', 'hosts'])
 ases = ases[ases['asn']!='AS32934']
 
+ax = ases.plot.line(x='asn')
+ax.set_ylabel("Hosts")
+fig = ax.get_figure()
+plt.savefig("plots/hosts_per_AS.png")
+
 ax = ases.head(100).plot.bar(x='asn',y='hosts' )
 ax.set_ylabel("Hosts")
 ax.set_xlabel("ASes")
