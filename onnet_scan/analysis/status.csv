@@ -1,0 +1,6 @@
+           status  count
+application-error    616
+connection-timeout  19671
+        io-timeout    751
+           success   1456
+     unknown-error  11042
