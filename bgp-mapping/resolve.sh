@@ -15,6 +15,10 @@ GetASNforIP() {
     WhoIs $1  | grep -P -o "AS\d+" -m 1
 }
 
+GetASNCountryforIP() {
+    whois $1  | grep -P -o "(ountry.*)" | grep -P -o "\w\w$" -m 1
+}
+
 GetAllIpv4sForASN() {
     WhoIs $1 | grep -P "route[^6]" | grep -P -o "\d+\.\d+\.\d+\.\d+/\d{1,2}"
 }
@@ -28,6 +32,7 @@ GetIps() {
 
 export WhoIs
 export GetASNforIP
+export GetASNCountryforIP
 export GetAllIpv4sForASN
 export GetIps
 
@@ -39,6 +44,8 @@ elif [ $1 = "domain" ]; then
     GetIps $2
 elif [ $1 = "whois" ] && [[ $2 =~ AS[0-9]+ ]]; then
     GetAllIpv4sForASN $2
+elif [ $1 = "whois_country" ]; then
+        GetASNCountryforIP $2
 elif [ $1 = "whois" ]; then
     GetASNforIP $2
 else 

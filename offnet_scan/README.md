@@ -39,3 +39,5 @@ zgrab2
 ### Analysis
 
 Hosts per ASN: [hosts_per_AS.txt](./hosts_per_AS.txt)
+Unique Certificates per ASN: [hosts_certs_per_AS.txt](./hosts_certs_per_AS.txt)
+ASes and Hosts per Country: [hosts_per_country.txt](./hosts_per_country.txt)
