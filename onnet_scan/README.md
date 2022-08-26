@@ -60,7 +60,7 @@ proxy_status
 x_fb_debug
 ```
 
-## Output analysis
+## Analysis
 
 Code: [analyze_output.py](./analysis/analyze_output.py)
 
@@ -84,6 +84,8 @@ Certificates | 15
 
 ### Certificates
 
+[subject_cert_count.csv](./analysis/subject_cert_count.csv)
+
 Subject | Certificate | Count
 -|-|-
 *.atlassolutions.com | MIIHVTCCBj2gAwIBAgIQBPvoc4JrZHU862rc0HKrRDANBg... | 56
@@ -104,6 +106,8 @@ Subject | Certificate | Count
 
 ### Header Response Header Keys
 
+[status.csv](./analysis/status.csv)
+
 header key | count
 -|-
 ""              | 56
@@ -112,6 +116,8 @@ proxy_status | 1400
 x_fb_debug | 438
 
 ### Header keys per subject:
+
+[header_per_subject.csv](./analysis/header_per_subject.csv)
 
 Subject | Header key | count
 -|-|-

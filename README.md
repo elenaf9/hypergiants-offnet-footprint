@@ -14,6 +14,18 @@ What is the AS footprint of hypergiants' off-nets today?
     - scan with zmap for hosts online on port 443
     - scan with zgrab2 for meta related certificates and headers
 
+## Results
+
+Unique TLS Certificates: 15  
+Off-net host count: 16172  
+Off-net AS count: 2339  
+
+Scan | Analysis | Plots
+-|-|-
+On-net | [onnet_scan#Analysis](./onnet_scan/README.md#analysis) | [onnet_scan/analysis/plots](onnet_scan/analysis/plots)
+Off-net | [offnet_scan#Analysis](./offnet_scan/README.md#analysis) | [offnet_scan/analysis/plots](offnet_scan/analysis/plots)
+
+
 ## Ressources
 
 - [Gigis et al.]  

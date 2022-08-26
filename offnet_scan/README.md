@@ -1,6 +1,6 @@
 # Off-net fingerprint scan  (21.08.2022 14:00)
 
-### Commands
+## Commands
 
 First global scan with zmap for TCP SYN 443 then scan for specific meta related
 certificates and headers from on-net scan
@@ -18,7 +18,7 @@ $ zgrab2 --input-file=zgrab_config/zmap_results_global_tcp_443 multiple -c zgrab
 time="2022-08-21T18:30:28Z" level=info msg="finished grab at 2022-08-21T18:30:28Z"
 ```
 
-### Scan results format
+## Scan results format
 
 zmap
 ```
@@ -36,7 +36,7 @@ zgrab2
   * `success-meta-header` (meta header  found)
   * `success-meta-cert` (meta cert found)
 
-### Analysis
+## Analysis
 
 **Total host count**: 16172
 **Total AS count**: 2339
