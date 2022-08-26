@@ -38,6 +38,9 @@ zgrab2
 
 ### Analysis
 
+**Total host count**: 16172
+**Total AS count**: 2339
+
 File | Description
 -|-
 [hosts_per_AS.csv](./analysis/hosts_per_AS.csv) | Hosts per ASN

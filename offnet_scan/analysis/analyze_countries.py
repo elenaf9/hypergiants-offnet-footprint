@@ -25,8 +25,6 @@ def count(values):
 
 # load bgp data from csv
 def load_data(file_name):
-    cnames = ["i","asn", "hosts"]
-
     load_config = {
         "delim_whitespace": True,
         "engine":'c',

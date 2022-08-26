@@ -7,8 +7,6 @@ from mpl_toolkits.axes_grid1 import make_axes_locatable
 
 
 def load_data(file_name):
-    cnames = ["i","asn", "hosts"]
-
     load_config = {
         "delim_whitespace": True,
         "engine":'c',
