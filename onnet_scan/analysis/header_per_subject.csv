@@ -1,20 +1,20 @@
-                           subject            header_key    0
-              *.atlassolutions.com          proxy_status   56
-                    *.bulletin.com          proxy_status  224
-                 *.expresswifi.com          proxy_status   56
-             *.extern.facebook.com            x_fb_debug  112
-                *.facebook-dns.com          proxy_status   56
-                    *.facebook.com                         56
-                    *.facebook.com            x_fb_debug  154
-                    *.facebook.com          proxy_status  168
-                    *.facebook.com            x_fb_debug  238
-    *.facebookvirtualassistant.com          proxy_status   56
-                          *.fb.com          proxy_status  224
-                       *.fbe2e.com          proxy_status  112
-                   *.instagram.com          proxy_status  280
-                      *.oculus.com          proxy_status   56
-             *.secure.facebook.com            x_fb_debug   24
-             *.secure.facebook.com            x_fb_debug   32
-      *.secure.latest.facebook.com            x_fb_debug   56
-                    *.whatsapp.net          proxy_status   56
-                          *.wit.ai          proxy_status   56
+	subject	header_key	count
+0	*.atlassolutions.com	proxy_status	29
+1	*.bulletin.com	proxy_status	116
+2	*.expresswifi.com	proxy_status	29
+3	*.extern.facebook.com	x_fb_debug	58
+4	*.facebook-dns.com	proxy_status	29
+5	*.facebook.com		29
+6	*.facebook.com	priority x_fb_debug	79
+7	*.facebook.com	proxy_status	87
+8	*.facebook.com	x_fb_debug	124
+9	*.facebookvirtualassistant.com	proxy_status	29
+10	*.fb.com	proxy_status	116
+11	*.fbe2e.com	proxy_status	58
+12	*.instagram.com	proxy_status	145
+13	*.oculus.com	proxy_status	29
+14	*.secure.facebook.com	priority x_fb_debug	10
+15	*.secure.facebook.com	x_fb_debug	19
+16	*.secure.latest.facebook.com	x_fb_debug	29
+17	*.whatsapp.net	proxy_status	29
+18	*.wit.ai	proxy_status	29

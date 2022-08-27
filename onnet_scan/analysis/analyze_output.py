@@ -1,10 +1,9 @@
+import sys
+
 import pandas as pd
+
 pd.options.display.max_rows = 200
-import numpy as np
-import matplotlib.pyplot as plt
-import gc
 import functools
-import json
 
 
 def select(row):
@@ -24,13 +23,13 @@ def select(row):
             if key == 'http.result.response.headers.unknown':
                 keys = list(map(lambda x: x['key'], data[key][0]))
                 keys.sort()
-                keys = functools.reduce(lambda acc, curr: acc + ' ' + curr, keys, '')
+                keys = ' '.join(keys)
                 include.append(keys)
             else:
                 value = data[key][0]
                 if isinstance(value, list):
                     value.sort()
-                    value = functools.reduce(lambda acc, curr: acc + ' ' + curr, value, '')
+                    value = ' '.join(value)
                 include.append(value)
         else:
             include.append("")
@@ -51,7 +50,7 @@ def load_data(file_name):
     df = df.apply(select, axis=1, result_type='expand')
     return df
 
-df = load_data("../2022-08-16T13/output.zip")
+df = load_data(sys.argv[1])
 
 # Different status
 status = df.groupby(["status"]).size().reset_index()
@@ -62,19 +61,20 @@ success = df[df['certificate'].str.len() > 0]
 # Unique issuer sn
 print("\nUnique issuer sns:\n", success[["issuer"]].nunique().to_frame(name="issuer nunique"))
 # Analyze certificates
-certs = success.groupby(["subject", "certificate"]).size().reset_index()
+certs = success.groupby(["subject", "certificate"]).size().reset_index().rename(columns={0: 'count'})
+certs.filter(['subject', 'count']).to_csv('subject_cert_count.csv', sep='\t')
 # Unique certificates per subject cn
 print("\nUnique subjects and certificates:\n", certs.nunique().to_frame(name="nunique"))
 # Print certificates
 print("\ncertificates:\n", certs)
 
-
 # Analyze http header keys
 header_keys = success.groupby(["header_key"]).size().reset_index()
 print("\nheader_keys:\n", header_keys)
 
-certs = success.groupby(["subject", "header_key"]).size().reset_index()
+certs = success.groupby(["subject", "header_key"]).size().reset_index().rename(columns={0: 'count'})
 # Header keys per subject
+certs.to_csv('header_per_subject.csv', sep='\t')
 print("\nHeader keys per subject:\n", certs)
 
 
