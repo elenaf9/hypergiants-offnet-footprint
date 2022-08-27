@@ -106,16 +106,12 @@ Subject | Certificate | Count
 
 ### Header Response Header Keys
 
-[status.csv](./analysis/status.csv)
-
 header key | count
--|-
-""              | 56
-priority x_fb_debug | 178
-proxy_status | 1400
-x_fb_debug | 438
+---|---
+proxy_status | 725
+x_fb_debug | 319
 
-### Header keys per subject:
+### Header keys per subject
 
 [header_per_subject.csv](./analysis/header_per_subject.csv)
 
