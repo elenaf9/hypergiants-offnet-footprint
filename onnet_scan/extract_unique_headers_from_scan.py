@@ -11,11 +11,14 @@ fail_count = 0
 headers = set()
 unique_header_count = 0
 
-occurrences = {}
+occurrences = {
+    'none': 0
+}
 common_names_without_x_fb_debug = set()
 common_names_with_x_fb_debug = set()
 common_names_without_proxy_status = set()
 common_names_with_proxy_status = set()
+common_names_without_any = set()
 
 for line in lines:
     parsed = json.loads(line)
@@ -52,6 +55,9 @@ for line in lines:
                 common_names_with_proxy_status.add(common_name)
             else:
                 common_names_without_proxy_status.add(common_name)
+            if not found_proxy_header and not found_x_debug_header:
+                occurrences["none"] += 1
+                common_names_without_any.add(common_name)
 
     else:
         fail_count += 1
@@ -63,3 +69,4 @@ print(f'common names without x_fb_debug: {common_names_without_x_fb_debug}')
 print(f'common names with x_fb_debug: {common_names_with_x_fb_debug}')
 print(f'common names without proxy_status: {common_names_without_proxy_status}')
 print(f'common names with proxy_status: {common_names_with_proxy_status}')
+print(f'common names without any header: {common_names_without_any}')
